@@ -1,0 +1,18 @@
+form input {
+  border: none;
+  border-radius: 4px;
+  flex-basis: 15%;
+  min-width: 120px;
+  height: 28px;
+  transition: 0.2s linear;
+  box-shadow: 0 0 9px 9px rgb(0, 90, 190);
+  margin: 10px;
+  font-size: 20px;
+}
+input:focus {
+  background-color: whitesmoke;
+  box-shadow: 0 0 12px 12px blue;
+}
+h2 {
+  cursor: context-menu;
+}
