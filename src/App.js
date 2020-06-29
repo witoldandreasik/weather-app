@@ -1,25 +1,71 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Form from "./components/Form/Form";
+import Result from "./components/Result/Result";
+import "./App.css";
+
+const APIKey = "1cdab72c35fc34cc944756e642515940";
 
 class App extends Component {
+  state = {
+    value: "",
+    date: "",
+    city: "",
+    sunrise: "",
+    sunset: "",
+    temp: "",
+    pressure: "",
+    wind: "",
+    weather: "",
+    weatherIcon: "",
+    err: "",
+  };
+
+  handleInputChange = (e) => {
+    this.setState({
+      value: e.target.value,
+    });
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.value.length === 0) return;
+    if (prevState.value !== this.state.value) {
+      const API = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.value}&appid=${APIKey}&units=metric`;
+      fetch(API)
+        .then((response) => {
+          if (response.ok) {
+            return response;
+          }
+          throw Error("nie udalo sie");
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          const time = new Date().toLocaleString();
+          this.setState((prevState) => ({
+            err: false,
+            date: time,
+            city: this.state.value,
+            sunrise: data.sys.sunrise,
+            sunset: data.sys.sunset,
+            temp: data.main.temp,
+            pressure: data.main.pressure,
+            wind: data.wind.speed,
+            weather: data["weather"]["0"]["description"],
+          }));
+        })
+        .catch((err) => {
+          console.log(err);
+          this.setState((prevState) => ({
+            err: true,
+            city: prevState.value,
+          }));
+        });
+    }
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        <Form value={this.state.value} change={this.handleInputChange} />
+        <Result weather={this.state} />
       </div>
     );
   }
