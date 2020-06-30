@@ -4,7 +4,7 @@ form input {
   flex-basis: 15%;
   min-width: 120px;
   height: 28px;
-  transition: 0.2s linear;
+  transition: 0.2s ease-in-out;
   box-shadow: 0 0 9px 9px #dfd4b3;
   margin: 10px;
   font-size: 20px;

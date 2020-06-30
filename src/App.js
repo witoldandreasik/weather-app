@@ -43,7 +43,7 @@ class App extends Component {
           this.setState((prevState) => ({
             err: false,
             date: time,
-            city: this.state.value,
+            city: this.state.value.toUpperCase(),
             sunrise: data.sys.sunrise,
             sunset: data.sys.sunset,
             temp: data.main.temp,

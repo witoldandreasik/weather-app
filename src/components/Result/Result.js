@@ -52,7 +52,7 @@ const Result = (props) => {
 
   return (
     <div className="result">
-      {err ? `We can't find data of ${city}` : content}
+      {err ? `We can't find data of ${city.toUpperCase()}` : content}
     </div>
   );
 };
