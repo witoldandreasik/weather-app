@@ -1,3 +1,9 @@
 p span {
   font-weight: bold;
 }
+hr {
+  background-color: #ff005c;
+  height: 2px;
+  border-radius: 6px;
+  border: none;
+}
