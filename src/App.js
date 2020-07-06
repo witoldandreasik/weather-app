@@ -64,6 +64,13 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+        <a
+          href="https://witoldandreasik.github.io/weather-app-hooks/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Check hooks version. Click here!
+        </a>
         <Form value={this.state.value} change={this.handleInputChange} />
         <Result weather={this.state} />
       </div>

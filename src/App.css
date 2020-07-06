@@ -14,6 +14,14 @@
   cursor: context-menu;
   overflow-y: scroll;
 }
+a {
+  color: white;
+  text-decoration: none;
+  transition: 0.2s linear;
+}
+a:hover {
+  color: rgb(95, 2, 2);
+}
 @media (min-width: 768px) {
   .app {
     font-size: 25px;
