@@ -3,7 +3,8 @@ import Form from "./components/Form/Form";
 import Result from "./components/Result/Result";
 import "./App.css";
 
-const APIKey = "1cdab72c35fc34cc944756e642515940";
+require("dotenv").config();
+const APIKey = process.env.REACT_APP_API_Key;
 
 class App extends Component {
   state = {
